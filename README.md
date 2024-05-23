@@ -39,3 +39,4 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 - 视频地址：[video](https://www.bilibili.com/video/BV1qw4m197TD?p=17&spm_id_from=pageDriver&vd_source=1f44f22d7be0bbcb64add47fdb13b0f7)
 - 集数： p17 1.24 分钟
+- 集数： p25 0.15 分钟

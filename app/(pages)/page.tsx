@@ -1,5 +1,13 @@
-import Image from "next/image";
+export const dynamic = "force-dynamic";
+import { ArticleApi } from "../api/article-api";
+import LatestNews from "../components/LatestNews/LatestNews";
 
-export default function IndexPage() {
-  return <div>Hell world articles</div>;
+export default async function IndexPage() {
+  const articles = await ArticleApi.fetchToday();
+
+  return (
+    <div>
+      <LatestNews />
+    </div>
+  );
 }
