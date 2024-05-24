@@ -1,6 +1,7 @@
 import { Inter } from "next/font/google";
 import { Metadata } from "next";
 import "./globals.css";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const inter = Inter({ subsets: ["latin"] });
 

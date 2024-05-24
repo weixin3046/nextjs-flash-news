@@ -1,3 +1,4 @@
+import { delayResponse } from "@/app/lib/mock";
 import {
   Article,
   ArticleCategory,
@@ -6,11 +7,14 @@ import {
 
 export class ArticleApi {
   static async fetchToday(): Promise<Article[]> {
-    return (
-      (await (
-        await fetch(`${process.env.API_BASE_URL}`)
-      ).json()) as ArticleListResponse
-    ).results;
+    return delayResponse(
+      (
+        (await (
+          await fetch(`${process.env.API_BASE_URL}`)
+        ).json()) as ArticleListResponse
+      ).results,
+      2000
+    );
   }
   static async fetchByCategory(category: ArticleCategory): Promise<Article[]> {
     return (
