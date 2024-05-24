@@ -1,22 +1,28 @@
-import { CATEGORIES_ITEMS } from "@/app/components/Nav/constant";
+import { ArticleApi } from "@/app/api/article-api";
+import ArticleList from "@/app/components/ArticleList/ArticleList";
+import { CATEGORIES_ITEMS } from "@/app/constant";
 import { ArticleCategory } from "@/app/types/article-type";
 import Image from "next/image";
 
-export default function CategoryDetailPage(p: {
+export const dynamic = "force-dynamic"; //https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config
+
+export default async function ArticlesByCategoryPage(p: {
   params: { category: ArticleCategory };
   searchParams: { date: string };
 }) {
-  const categoryItem = CATEGORIES_ITEMS[p.params.category];
+  // const categoryItem = CATEGORIES_ITEMS[p.params.category];
+  const articles = await ArticleApi.fetchByCategory(p.params.category);
   return (
-    <div className="flex space-x-4">
-      <Image
-        src={categoryItem.src}
-        alt={categoryItem.alt}
-        className="w-10 h-10"
-      />
-      <h1 className="font-bold text-3xl capitalize">
-        {p.params.category} News of {p.searchParams.date}
-      </h1>
+    <div>
+      <div className="flex items-center space-x-4 mb-16">
+        <Image
+          src={CATEGORIES_ITEMS[p.params.category].src}
+          className="h-10 w-10"
+          alt="Latest news icon"
+        />
+        <h1>{p.params.category} news</h1>
+      </div>
+      <ArticleList articles={articles} />
     </div>
   );
 }

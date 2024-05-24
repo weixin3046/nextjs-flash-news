@@ -2,14 +2,14 @@ import { Article } from "@/app/types/article-type";
 import Image from "next/image";
 import defaultNewsPng from "@/public/default-news.png";
 import Link from "next/link";
-import { CATEGORIES_ITEMS } from "../Nav/constant";
+import { CATEGORIES_ITEMS } from "../../constant";
 import { ImageWithFallback } from "../ImageWithFallback/ImageWithFallback";
 
 export default function ArticleCard(p: { article: Article }) {
   return (
     <>
       <Link
-        href={"#"}
+        href={`/articles/title/${p.article.title}`}
         className="space-y-4 block w-80 hover:bg-slate-50 transition transform hover:scale-105 border-2 border-gray-100 py-4 px-6 rounded-xl shadow-sm"
       >
         {/** Header */}
